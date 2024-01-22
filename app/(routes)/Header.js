@@ -12,9 +12,9 @@ const Header = () => {
     }
 
     return (
-        <header className="bg-secondary/0 py-1 px-3 flex items-center justify-between">
+        <header className="bg-secondary/0 py-1 px-3 flex items-center justify-between mb-12">
             <div className="trans">
-                <button className="rounded bg-[#B5c99a3] p-2 text-primary transition" onClick={showSidebar}>
+                <button className="rounded bg-[#B5c99a3] p-2 text-primary transition  " onClick={showSidebar}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-8 w-8"

@@ -32,4 +32,8 @@ body {
   .trans {
     @apply transition-all ease-linear duration-[0.3s]
   }
+
+  .file {
+    @apply h-full w-full object-contain
+  }
 }

@@ -1,6 +1,7 @@
 import { Inter, Montserrat } from 'next/font/google'
 import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
+import MyContext from '../Helper/UserContext'
 
 const inter = Montserrat({ subsets: ['latin'] })
 
@@ -14,7 +15,7 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html lang="en">
         <body className={`${inter.className} bg-white`}>
-          {children}
+          <MyContext>{children}</MyContext>
         </body>
       </html>
     </ClerkProvider>
