@@ -8,9 +8,10 @@ import Image from "next/image";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { db, storage } from '../firebase'
 import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
-import { useAuth, useUser } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 import ProgressBar from './ProgressBar'
+import { useRouter } from "next/navigation";
 
 const CustomDropzon = () => {
   const [files, setFiles] = useState([])
@@ -18,7 +19,8 @@ const CustomDropzon = () => {
   const [progress, setProgress] = useState('')
   const [uploadSuccess, setUploadSuccess] = useState(false);
   const [active, setActive] = useState(false);
-  const [completed, setCompleted] = useState(true)
+  const [completed, setCompleted] = useState(true);
+  const router = useRouter();
 
   const bytesToSize = (bytes) => {
     const kilobytes = bytes / 1024;
@@ -59,7 +61,7 @@ const CustomDropzon = () => {
 
   const notification = () => toast.success('Uploaded successfylly', {
     position: "top-right",
-    autoClose: 1000,
+    autoClose: 2000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
@@ -92,6 +94,7 @@ const CustomDropzon = () => {
           timeStamp: serverTimestamp(),
           type: file.type,
           size: file.size,
+          password: null,
         });
 
         // Storing file content in Firebase Storage
@@ -117,9 +120,13 @@ const CustomDropzon = () => {
             });
             setProgress(`File Uploaded Successfully.`);
             setTimeout(() => {
-              setProgress('0%')
+              setProgress('0%');
             }, 200);
             notification();
+
+            setTimeout(() => {
+              router.push('/FilePreview/'+docRef.id)
+            }, 3000);
             setFiles([]);
           }
         );

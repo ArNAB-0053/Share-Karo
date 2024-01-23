@@ -60,3 +60,9 @@ body {
     display: none;
   }
 }
+
+
+li {
+  text-decoration: none;
+}
+

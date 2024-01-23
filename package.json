@@ -13,6 +13,7 @@
     "@heroicons/react": "^2.1.1",
     "firebase": "^10.7.2",
     "next": "14.0.4",
+    "next-share": "^0.27.0",
     "react": "^18",
     "react-dom": "^18",
     "react-dropzone": "^14.2.3",
