@@ -2,7 +2,6 @@
 import Link from "next/link"
 import { ArrowUpTrayIcon, FolderIcon, HomeIcon, PhoneIcon, UserIcon } from '@heroicons/react/24/solid'
 import { useEffect, useState, useContext } from "react"
-import { MyContext } from "../Helper/UserContext";
 
 const Sidebar = () => {
     // sidebar is in routes folder's header
@@ -21,8 +20,6 @@ const Sidebar = () => {
         }
     }, [])
 
-
-    const user = useContext(MyContext);
     return (
         <div className='w-[18rem] bg-sidebar_color h-[100svh] flex flex-col items-start justify-start gap-6 '>
             <h1>Fileshare.</h1>
@@ -60,9 +57,6 @@ const Sidebar = () => {
                             <PhoneIcon className="icon_dash" />
                             Contact
                         </Link>
-                        <div>
-                            {user}
-                        </div>
                     </ul>
                 </nav>
             </div>
