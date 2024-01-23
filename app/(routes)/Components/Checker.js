@@ -76,7 +76,7 @@ const Checker = ({ docId, userId }) => {
                     checked={isChecked}
                     onChange={handleCheckboxChange}
                 />
-                Enable password
+                Enable password?
             </label>
 
             {isChecked && (
