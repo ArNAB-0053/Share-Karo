@@ -117,7 +117,7 @@ const page = ({ params }) => {
 
                         {/* <a className="py-3 px-10 h-auto w-full sm:w-auto bg-purple-700 text-center text-white" download={fileInfo.filename} href={`${fileInfo.downloadUrl}`}>Download</a> */}
 
-                        <EmailSender />
+                        <EmailSender fileName={fileInfo.filename} size={fileInfo.size} type={fileInfo.type} password={fileInfo.password} shareUrl={`http://localhost:3000/share-preview/${params.id}`}/>
 
                     </div>
                 </div>
