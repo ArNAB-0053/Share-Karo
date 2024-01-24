@@ -22,7 +22,7 @@ body {
 
 @layer components {
   .dashboard_items {
-    @apply py-2 px-6 w-[16rem] ml-[1rem] rounded-lg hover:bg-header_hover text-white/80 cursor-pointer font-[Montserrat] flex items-start justify-start gap-3 active:bg-primary
+    @apply py-2 px-6 w-[16rem] ml-[1rem] rounded-lg hover:bg-blue-400 active:scale-[0.93] active:bg-blue-400 text-blue-400 hover:text-white focus:text-white active:text-white cursor-pointer font-[Montserrat] flex items-center justify-start gap-3 my-1
   }
 
   .icon_dash {
@@ -43,6 +43,14 @@ body {
 
   .table p {
     @apply text-start
+  }
+
+  .line {
+    @apply w-full h-[1px] bg-blue-400/50
+  }
+
+  .mobileHeader {
+    @apply w-[90%] h-auto py-2 rounded-lg flex items-center justify-center focus:bg-blue-400 focus:text-white active:bg-blue-400 active:text-white hover:bg-blue-400 hover:text-white
   }
 }
 

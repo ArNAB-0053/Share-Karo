@@ -22,7 +22,7 @@ const page = async () => {
 
   return (
     <div className='min-h-[100svh] overflow-x-hidden md:ml-[18rem] px-6 md:px-6 py-16 xl:px-36 w-screen'>
-      <h1 className='text-xl font-bold  mb-4'>All files</h1>
+      <h1 className='text-xl font-bold  mb-4 font-[Montserrat]'>All files</h1>
       <TableWrapper skeletonFile={skeletonFiles} />
     </div>
   )

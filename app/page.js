@@ -4,7 +4,7 @@ import Header from '../Components/Header';
 
 const page = () => {
   return (
-    <div className='h-[100svh]'>
+    <div className='h-[100svh] overflow-hidden'>
       <Header/>
       <Banner/>      
     </div>

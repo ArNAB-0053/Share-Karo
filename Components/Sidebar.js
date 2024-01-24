@@ -22,24 +22,24 @@ const Sidebar = ({ closeSideBar }) => {
     }, [])
 
     return (
-        <div className='w-[18rem] bg-sidebar_color h-[100svh] flex flex-col items-start justify-start gap-6 '>
+        <div className='w-[18rem] bg-sidebar_color h-[100lvh] flex flex-col items-start justify-start gap-6 '>
             <div className="py-3">
                 <h1>Fileshare.</h1>
             </div>
             <div className="w-full">
                 <nav aria-label="Global">
                     <ul className="flex items-start justify-start gap-2 text-lg font-[Montserrat] font-bold flex-col w-full">
-                        <Link onClick={() => { setActiveFile(true); setActiveUp(false); setActiveUpg(false); closeSideBar() }} className={`dashboard_items ${activeFile && 'bg-header_hover'} `} href="/Files">
+                        <Link onClick={() => { setActiveFile(true); setActiveUp(false); setActiveUpg(false); closeSideBar() }} className={`dashboard_items ${activeFile && 'bg-blue-400 text-white'} `} href="/Files">
                             <FolderIcon className="icon_dash" />
                             Files
                         </Link>
 
-                        <Link onClick={() => { setActiveUp(true); setActiveFile(false); setActiveUpg(false); closeSideBar() }} className={`dashboard_items ${activeUp && 'bg-header_hover'}`} href="/Upload">
+                        <Link onClick={() => { setActiveUp(true); setActiveFile(false); setActiveUpg(false); closeSideBar() }} className={`dashboard_items ${activeUp && 'bg-blue-400 text-white'}`} href="/Upload">
                             <ArrowUpTrayIcon className="icon_dash" />
                             Upload
                         </Link>
 
-                        <Link onClick={() => { setActiveUp(false); setActiveFile(false); setActiveUpg(true); closeSideBar() }} className={`dashboard_items ${activeUpg && 'bg-header_hover'}`} href="/Upgrade">
+                        <Link onClick={() => { setActiveUp(false); setActiveFile(false); setActiveUpg(true); closeSideBar() }} className={`dashboard_items ${activeUpg && 'bg-blue-400 text-white'}`} href="/Upgrade">
                             <ShieldCheckIcon className="icon_dash" />
                             Upgrade
                         </Link>
@@ -51,17 +51,17 @@ const Sidebar = ({ closeSideBar }) => {
 
             <div className="">
                 <nav aria-label="Global">
-                    <ul className="w-full flex items-start justify-start gap-2 text-lg font-[Montserrat] font-bold flex-col">
-                        <Link className="dashboard_items" href="/">
-                            <HomeIcon className="icon_dash" />
+                    <ul className="w-full flex items-center justify-center gap-2 font-[Montserrat] font-bold flex-col text-md pl-[0.3rem]">
+                        <Link className="dashboard_items gap-4" href="/">
+                            <HomeIcon className="h-5 w-5" />
                             Home
                         </Link>
-                        <Link className="dashboard_items" href="/About">
-                            <UserIcon className="icon_dash" />
+                        <Link className="dashboard_items gap-4" href="/About">
+                            <UserIcon className="h-5 w-5" />
                             About
                         </Link>
-                        <Link className="dashboard_items" href="/Contact">
-                            <PhoneIcon className="icon_dash" />
+                        <Link className="dashboard_items gap-4" href="/Contact">
+                            <PhoneIcon className="h-5 w-5" />
                             Contact
                         </Link>
                     </ul>

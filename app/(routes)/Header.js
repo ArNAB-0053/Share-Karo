@@ -2,7 +2,6 @@
 import { UserButton } from "@clerk/nextjs";
 import Sidebar from "../../Components/Sidebar";
 import { useEffect, useRef, useState } from "react";
-import { XMarkIcon } from '@heroicons/react/24/solid'
 
 const Header = () => {
     const [sidebar, setSidebar] = useState(false);
@@ -34,7 +33,7 @@ const Header = () => {
     }, [sidebar]);
 
     return (
-        <header className="shadow-md py-1 px-3 flex items-center justify-between">
+        <header className="shadow-md shadow-primary/10 py-1 px-3 flex items-center justify-between">
             <div className="trans">
                 <button className="rounded bg-[#B5c99a3] p-2 text-primary transition  " onClick={showSidebar}>
                     <svg
@@ -51,8 +50,9 @@ const Header = () => {
                 <span className={`fixed top-0 z-40 ${sidebar ? 'left-0' : 'left-[-100%]'} md:left-0 trans`} ref={sidebarRef}>
                     <Sidebar closeSideBar={closeSidebar} />
                 </span>
-                {/* <XMarkIcon className={`bg-sidebar_color fixed cursor-pointer h-[3rem] w-[3rem] ${sidebar? `left-[19.9rem]` : 'left-[calc(-100%+17.9rem)]' }  top-0 shadow-lg z-40 md:hidden text-red-500 p-1 trans`} onClick={()=>{setSidebar(false)}} /> */}
             </div>
+
+            <div className={`${sidebar ? 'bg-[#212529c4] w-[430vw] opacity-1' : 'bg-transparent w-0 opacity-0'} trans fixed h-[150vh] top-[-4vh] right-0 z-10`}></div>
 
             <h1 className="md:hidden">FileShare.</h1>
 
