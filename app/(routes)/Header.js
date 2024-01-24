@@ -11,6 +11,10 @@ const Header = () => {
         setSidebar(true);
     }
 
+    const closeSideBar =() => {
+        setSidebar(false);
+    }
+
     return (
         <header className="bg-secondary/0 py-1 px-3 flex items-center justify-between mb-12">
             <div className="trans">
@@ -27,7 +31,7 @@ const Header = () => {
                     </svg>
                 </button>
                 <span className={`fixed top-0  ${sidebar? `left-0` : 'left-[-100%]' } md:left-0  trans`}>
-                    <Sidebar />
+                    <Sidebar closeSideBar={()=>{setSidebar(false)}} />
                 </span>
                 <XMarkIcon className={`absolute h-[3rem] w-[3rem] ${sidebar? `left-[17.9rem]` : 'left-[calc(-100%+17.9rem)]' }  top-0 border-primary border-[0.2rem] md:hidden text-sidebar_color p-1 trans`} onClick={()=>{setSidebar(false)}} />
             </div>

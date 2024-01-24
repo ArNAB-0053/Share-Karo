@@ -83,10 +83,10 @@ import {
                     <b>Size: </b>
                     {res.size}
                   </Text>
-                  <Text style={{ ...paragraph, marginTop: -5 }}>
+                  {/* <Text style={{ ...paragraph, marginTop: -5 }}>
                     <b>Password: </b>
                     {res.password}
-                  </Text>
+                  </Text> */}
   
                 </Column>
               </Row>
