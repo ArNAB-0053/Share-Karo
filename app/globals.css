@@ -22,7 +22,7 @@ body {
 
 @layer components {
   .dashboard_items {
-    @apply py-2 px-6 w-[18rem] hover:bg-header_hover text-white/80 cursor-pointer font-[Montserrat] flex items-start justify-start gap-3 active:bg-primary
+    @apply py-2 px-6 w-[16rem] ml-[1rem] rounded-lg hover:bg-header_hover text-white/80 cursor-pointer font-[Montserrat] flex items-start justify-start gap-3 active:bg-primary
   }
 
   .icon_dash {
@@ -35,6 +35,14 @@ body {
 
   .file {
     @apply h-full w-full object-contain
+  }
+
+  .table {
+    @apply grid-cols-smallDev lg:grid-cols-customgrid items-center justify-start
+  }
+
+  .table p {
+    @apply text-start
   }
 }
 
@@ -50,6 +58,7 @@ body {
   0% {
     right: -20vw;
   }
+
   100% {
     right: 1vw;
   }
@@ -66,3 +75,8 @@ li {
   text-decoration: none;
 }
 
+.table {
+  display: grid;
+  grid-column-gap: 20px;
+  grid-row-gap: 8px;
+}

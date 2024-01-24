@@ -15,8 +15,12 @@ module.exports = {
       colors: {
         primary: '#006da4',
         secondary: '#004d74',
-        sidebar_color: '#003554',
+        sidebar_color: '#162C46',
         header_hover: '#006494',
+      },
+      gridTemplateColumns: {
+        'customgrid': '0.3fr 1.5fr repeat(2, 0.8fr) repeat(2, 0.2fr)',
+        'smallDev': '0.4fr 2fr 0.8fr repeat(2, 0.3fr)'
       }
     },
   },

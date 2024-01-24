@@ -8,8 +8,8 @@ const page = async () => {
 
   const docsResult = await getDocs(collection(db, 'users', userId, 'files'))
 
-  const skeletonFiles = docsResult.docs.map((doc)=> ({
-    id: doc.id,
+  const skeletonFiles = docsResult.docs.map((doc) => ({
+    id: doc?.id,
     filename: doc.data().filename || doc.id,
     timestamp: new Date(doc.data().timestamp?.second * 1000) || undefined,
     fullname: doc.data().fullname,
@@ -21,7 +21,8 @@ const page = async () => {
   // console.log(skeletonFiles)
 
   return (
-    <div className='min-h-[100svh] overflow-hidden md:ml-[18rem] px-4 w-screen'>
+    <div className='min-h-[100svh] overflow-x-hidden md:ml-[18rem] px-6 md:px-6 py-16 xl:px-36 w-screen'>
+      <h1 className='text-xl font-bold  mb-4'>All files</h1>
       <TableWrapper skeletonFile={skeletonFiles} />
     </div>
   )

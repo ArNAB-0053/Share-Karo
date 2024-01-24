@@ -125,7 +125,7 @@ const CustomDropzon = () => {
             notification();
 
             setTimeout(() => {
-              router.push('/FilePreview/'+docRef.id)
+              router.push('/FilePreview/' + docRef.id)
             }, 3000);
             setFiles([]);
           }
@@ -147,7 +147,7 @@ const CustomDropzon = () => {
 
 
   return (
-    <div className={`flex flex-col items-center justify-center ${files.length === 0 ? 'mt-40 mb-[-20vh] ' : 'my-12'} trans`}>
+    <div className={`flex flex-col items-center justify-center ${files.length === 0 ? 'mt-40 mb-[-20vh] ' : 'my-16'} trans`}>
       <h1 className='text-2xl md:text-4xl mt-[-5vh] mb-12 text-center' > Start <strong className='text-primary'>Uploading</strong> files and <strong className='text-primary'>Share</strong> it </h1>
       <Dropzone onDrop={handleFiles}>
         {({ getRootProps, getInputProps, isDragActive, isDragReject, fileRejections, }) => (
@@ -208,7 +208,7 @@ const CustomDropzon = () => {
         <ProgressBar/>
       )} */}
 
-      <ProgressBar className={` progressBar bg-[#4cfb52] h-16 w-full sm:w-[18rem]  fixed right-[-20vw] top-0 sm:top-5 rounded-none sm:rounded-md ${completed === true ? 'hidden' : 'hidden sm:block'} ${active ? 'active' : ''}  `} progress={progress} />
+      {/* <ProgressBar className={` progressBar bg-[#4cfb52] h-16 w-full sm:w-[18rem]  fixed right-[-20vw] top-0 sm:top-5 rounded-none sm:rounded-md ${completed === true ? 'hidden' : 'hidden sm:block'} ${active ? 'active' : ''}  `} progress={progress} /> */}
 
 
       <button
@@ -217,16 +217,16 @@ const CustomDropzon = () => {
           handleUpload(file);
           setCompleted(false);
         }}
-        className={` uploadBtn w-full md:w-auto h-[3rem] p-0 sm:py-3 sm:px-10 bg-blue-500 mt-10 rounded-md text-white disabled:hidden hover:bg-primary active:bg-primary active:scale-[0.94] trans flex items-center sm:justify-center ${progress === '' || progress === '0%' ? 'justify-center' : 'justify-start' }`}>
+        className={` uploadBtn w-full md:w-[15rem] h-[3rem] bg-blue-500 focus:bg-blue-300 mt-10 rounded-md text-white focus:text-blue-500 disabled:hidden hover:bg-blue-300 active:bg-blue-300 active:scale-[0.94] trans flex items-center sm:justify-start ${progress === '' || progress === '0%' ? 'justify-center' : 'justify-start'} relative`}>
 
         <div
-          className={`flex h-full items-center justify-center upload_under bg-primary rounded-md`}
+          className={`flex h-full items-center justify-center bg-blue-500 rounded-md overflow-hidden`}
           style={{ width: `${progress === '0%' ? '0%' : progress}` }}
-        >
-          {progress === '' || progress === '0%' ? 'Upload' : progress}
+        >      <p className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">{progress === '' || progress === '0%' ? 'Upload' : 'Uploading...' + progress}</p>
+          <p className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] text-white ">{progress === '' || progress === '0%' ? 'Upload' : 'Uploading...' + progress}</p>
         </div>
 
-        <p className="hidden sm:block text-md">Upload</p>
+        {/* <p className="hidden sm:block text-md">Upload</p> */}
       </button>
       <ToastContainer />
     </div>

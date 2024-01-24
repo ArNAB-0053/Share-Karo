@@ -3,7 +3,7 @@ import React from 'react'
 
 const Header = () => {
     return (
-        <header className="bg-secondary/0 py-1">
+        <header className="bg-[#395886] py-1">
             <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                     <div className="md:flex md:items-center md:gap-12">
@@ -14,7 +14,7 @@ const Header = () => {
 
                     <div className="hidden md:block">
                         <nav aria-label="Global">
-                            <ul className="flex items-center gap-6 text-lg font-[Montserrat] font-bold">
+                            <ul className="flex items-center gap-6 text-lg font-[Montserrat] font-bold text-white">
                                 <li>
                                     <Link className="" href="/"> Home </Link>
                                 </li> 

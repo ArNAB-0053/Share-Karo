@@ -1,7 +1,7 @@
 'use client'
 import { UserButton } from "@clerk/nextjs";
 import Sidebar from "../../Components/Sidebar";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { XMarkIcon } from '@heroicons/react/24/solid'
 
 const Header = () => {
@@ -11,12 +11,30 @@ const Header = () => {
         setSidebar(true);
     }
 
-    const closeSideBar =() => {
+    const sidebarRef = useRef(null);
+
+    const closeSidebar = () => {
         setSidebar(false);
-    }
+    };
+
+    useEffect(() => {
+        const handleOutsideClick = (e) => {
+            if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
+                closeSidebar();
+            }
+        };
+
+        if (sidebar) {
+            document.addEventListener('click', handleOutsideClick);
+        }
+
+        return () => {
+            document.removeEventListener('click', handleOutsideClick);
+        };
+    }, [sidebar]);
 
     return (
-        <header className="bg-secondary/0 py-1 px-3 flex items-center justify-between mb-12">
+        <header className="shadow-md py-1 px-3 flex items-center justify-between">
             <div className="trans">
                 <button className="rounded bg-[#B5c99a3] p-2 text-primary transition  " onClick={showSidebar}>
                     <svg
@@ -30,10 +48,10 @@ const Header = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
-                <span className={`fixed top-0  ${sidebar? `left-0` : 'left-[-100%]' } md:left-0  trans`}>
-                    <Sidebar closeSideBar={()=>{setSidebar(false)}} />
+                <span className={`fixed top-0 z-40 ${sidebar ? 'left-0' : 'left-[-100%]'} md:left-0 trans`} ref={sidebarRef}>
+                    <Sidebar closeSideBar={closeSidebar} />
                 </span>
-                <XMarkIcon className={`absolute h-[3rem] w-[3rem] ${sidebar? `left-[17.9rem]` : 'left-[calc(-100%+17.9rem)]' }  top-0 border-primary border-[0.2rem] md:hidden text-sidebar_color p-1 trans`} onClick={()=>{setSidebar(false)}} />
+                {/* <XMarkIcon className={`bg-sidebar_color fixed cursor-pointer h-[3rem] w-[3rem] ${sidebar? `left-[19.9rem]` : 'left-[calc(-100%+17.9rem)]' }  top-0 shadow-lg z-40 md:hidden text-red-500 p-1 trans`} onClick={()=>{setSidebar(false)}} /> */}
             </div>
 
             <h1 className="md:hidden">FileShare.</h1>
