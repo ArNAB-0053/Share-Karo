@@ -37,8 +37,6 @@ const page = ({ params }) => {
     setLoading(true);
 
     const getFileInfo = async () => {
-      if (!user) return;
-
       try {
         const docRef = doc(db, "users", user.id, "files", params?.id);
         const docSnap = await getDoc(docRef);
