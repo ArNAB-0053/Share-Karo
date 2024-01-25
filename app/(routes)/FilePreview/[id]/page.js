@@ -91,9 +91,9 @@ const page = ({ params }) => {
             <div className="flex flex-col items-startjustify-center w-full">
               <h2>Short URL</h2>
               <span className="p-2 border shadow-sm w-full lg:w-[25vw] overflow-hidden flex items-center justify-between">
-                <p className="w-[calc(100%-3rem)] truncate">{`http://localhost:3000/share-preview/${params.id}`}</p>
+                <p className="w-[calc(100%-3rem)] truncate">{`https://share-karo.vercel.app/share-preview/${params.id}`}</p>
                 <CopyUrl
-                  shortUrl={`http://localhost:3000/share-preview/${params.id}`}
+                  shortUrl={`https://share-karo.vercel.app/share-preview/${params.id}`}
                 />
               </span>
             </div>
@@ -135,7 +135,7 @@ const page = ({ params }) => {
               size={fileInfo.size}
               type={fileInfo.type}
               password={fileInfo.password}
-              shareUrl={`http://localhost:3000/share-preview/${params.id}`}
+              shareUrl={`https://share-karo.vercel.app/share-preview/${params.id}`}
             />
           </div>
         </div>
