@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../../firebase";
 import "../../../styles/loader.css";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 
 const page = ({ params }) => {
   const { isSignedIn, isLoaded, user } = useUser();
@@ -13,14 +14,15 @@ const page = ({ params }) => {
   const [prompt, setPrompt] = useState();
 
   useEffect(() => {
-      const getFileInfo = async () => {
+    setLoading(true);
+    const getFileInfo = async () => {
       if (!user) return;
       try {
-        setLoading(true);
         const docRef = doc(db, "users", user.id, "files", params?.id);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
+          // console.log(docSnap.data())
           setFileInfo(docSnap.data());
         } else {
           console.log("No such document!");
@@ -41,7 +43,12 @@ const page = ({ params }) => {
     <div className="w-screen h-[100vh] flex items-center justify-center flex-col bg-gray-300 p-5">
       {!loading ? (
         <div className="flex items-center justify-start flex-col bg-white p-6 gap-5 max-[1084px]:w-[95%]">
-          <h1 className="text-4xl"> logo</h1>
+          <Image
+            src="/Image/logo.png"
+            width="140"
+            height="60"
+            className="h-7 w-36 md:block hidden"
+          />
           <h1 className="flex items-center justify-center flex-col">
             <strong className="text-primary text-xl text-center font-bold">
               {" "}

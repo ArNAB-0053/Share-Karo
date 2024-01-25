@@ -20,7 +20,7 @@ const EmailSender = ({ fileName, size, type, password, shareUrl }) => {
         };
         const notify = toast.loading("Sending...");
         GlobalApi.sendEmail(data).then((res) => {
-            console.log(res.success)
+            // console.log(res.success)
             if (res.data.data && res.data.data.id !== null) {
                 toast.success("Sent!", { id: notify });
             } else {

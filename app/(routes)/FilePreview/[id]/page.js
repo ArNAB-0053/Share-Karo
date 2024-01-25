@@ -44,7 +44,7 @@ const page = ({ params }) => {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-          // console.log(docSnap.data())
+          console.log(docSnap.data())
           setFileInfo(docSnap.data());
         } else {
           console.log("No such document!");
