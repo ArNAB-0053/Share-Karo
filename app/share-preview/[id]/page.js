@@ -13,17 +13,14 @@ const page = ({ params }) => {
   const [prompt, setPrompt] = useState();
 
   useEffect(() => {
-    setLoading(true);
-
-    const getFileInfo = async () => {
+      const getFileInfo = async () => {
       if (!user) return;
-
       try {
+        setLoading(true);
         const docRef = doc(db, "users", user.id, "files", params?.id);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-          // console.log(docSnap.data())
           setFileInfo(docSnap.data());
         } else {
           console.log("No such document!");
