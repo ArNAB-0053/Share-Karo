@@ -35,17 +35,13 @@ import {
         <Head />
         <Preview>Yelp recent login</Preview>
         <Body style={main}>
-          <Container>
-            <Section style={logo}>
-              <Img width={120} height={100} src='https://image.similarpng.com/very-thumbnail/2020/11/Share-icon-with-red-color-on-transparent-background-PNG.png' />
-            </Section>
-  
+          <Container> 
             <Section style={content}>
               <Row>
                 <Img
                   style={image}
                   width={620}
-                  src='https://graphicsfamily.com/wp-content/uploads/edd/2021/01/Web-banner-template-with-sports-concept-scaled.jpg'
+                  src='/Image/banner.png'
                 />
               </Row>
   
@@ -92,19 +88,10 @@ import {
               </Row>
               <Row style={{ ...boxInfos, paddingTop: "0" }}>
                 <Column style={containerButton} colSpan={2}>
-                  <a href={res.shareUrl} style={button}>Learn More</a>
+                  <a href={res.shareUrl} style={button}>Download</a>
                 </Column>
               </Row>
-            </Section>
-  
-            <Section style={containerImageFooter}>
-              <Img
-                style={image}
-                width={220}
-                src='https://image.similarpng.com/very-thumbnail/2020/11/Share-icon-with-red-color-on-transparent-background-PNG.png'
-              />
-            </Section>
-  
+            </Section>  
             <Text
               style={{
                 textAlign: "center",
