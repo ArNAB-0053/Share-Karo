@@ -2,6 +2,8 @@
 import { UserButton } from "@clerk/nextjs";
 import Sidebar from "../../Components/Sidebar";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 const Header = () => {
     const [sidebar, setSidebar] = useState(false);
@@ -54,7 +56,11 @@ const Header = () => {
 
             <div className={`${sidebar ? 'bg-[#212529c4] w-[430vw] opacity-1' : 'bg-transparent w-0 opacity-0'} trans fixed h-[150vh] top-[-4vh] right-0 z-10`}></div>
 
-            <h1 className="md:hidden">FileShare.</h1>
+            <div className="md:flex md:items-center md:gap-12">
+                <Link href='/' className='h-16 w-36 overflow-hidden'>
+                    <Image src='/Image/lenthy_logo.png' width='140' height='60' className='h-10 w-32 block md:hidden' />
+                </Link>
+            </div>
 
             <button className=''>
                 <UserButton afterSignOutUrl="/" />

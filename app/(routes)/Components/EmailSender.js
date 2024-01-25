@@ -9,6 +9,7 @@ const EmailSender = ({fileName, size, type, password, shareUrl}) => {
 
     const handleEmail = () => {
         const data = {
+            emailUser: prompt,
             userName: user?.fullName,
             filename: fileName,
             size: size,

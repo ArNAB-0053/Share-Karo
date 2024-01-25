@@ -1,6 +1,7 @@
 import { Inter, Montserrat } from 'next/font/google'
 import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
+import NextTopLoader from 'nextjs-toploader'
 
 const inter = Montserrat({ subsets: ['latin'] })
 
@@ -14,6 +15,7 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html lang="en">
         <body className={`${inter.className} bg-white`}>
+          <NextTopLoader color="#60A5FA" />
           {children}
         </body>
       </html>

@@ -69,7 +69,7 @@ const page = ({ params }) => {
         href="/Upload"
         className="flex items-center  justify-center gap-1 ml-4 rounded-full  mb-8 font-bold text-xl bg-[#101010] w-[10rem] mt-8 py-3 px-3"
       >
-        <ChevronLeftIcon className="text-white h-5 w-5" /> 
+        <ChevronLeftIcon className="text-white h-5 w-5" />
         <p className="text-white text-sm">Go to upload</p>
       </Link>
       {!loading ? (
@@ -99,32 +99,32 @@ const page = ({ params }) => {
             </div>
 
             {/* <div className="flex items-start justify-center flex-col gap-3 w-full">
-                            <h2>Share URL with friends</h2>
-                            <span className="flex items-start justify-center gap-6">
-                                <WhatsappShareButton
-                                    url={'https://github.com/next-share'}
-                                    title={'next-share is a social share buttons for your next React apps.'}
-                                    separator=":: "
-                                >
-                                    <WhatsappIcon size={32} round />
-                                </WhatsappShareButton>
+              <h2>Share URL with friends</h2>
+              <span className="flex items-start justify-center gap-6">
+                <WhatsappShareButton
+                  url={'https://github.com/next-share'}
+                  title={'next-share is a social share buttons for your next React apps.'}
+                  separator=":: "
+                >
+                  <WhatsappIcon size={32} round />
+                </WhatsappShareButton>
 
-                                <FacebookShareButton
-                                    url={'https://github.com/next-share'}
-                                    quote={'next-share is a social share buttons for your next React apps.'}
-                                    hashtag={'#nextshare'}
-                                >
-                                    <FacebookIcon size={32} round />
-                                </FacebookShareButton>
+                <FacebookShareButton
+                  url={'https://github.com/next-share'}
+                  quote={'next-share is a social share buttons for your next React apps.'}
+                  hashtag={'#nextshare'}
+                >
+                  <FacebookIcon size={32} round />
+                </FacebookShareButton>
 
-                                <TwitterShareButton
-                                    url={'https://github.com/next-share'}
-                                    title={'next-share is a social share buttons for your next React apps.'}
-                                >
-                                    <TwitterIcon size={32} round />
-                                </TwitterShareButton>
-                            </span>
-                        </div> */}
+                <TwitterShareButton
+                  url={'https://github.com/next-share'}
+                  title={'next-share is a social share buttons for your next React apps.'}
+                >
+                  <TwitterIcon size={32} round />
+                </TwitterShareButton>
+              </span>
+            </div> */}
 
             <Checker userId={user?.id} docId={params?.id} />
 

@@ -46,11 +46,11 @@ body {
   }
 
   .line {
-    @apply w-full h-[1px] bg-blue-400/50
+    @apply w-full h-[1px] bg-blue-400/30
   }
 
   .mobileHeader {
-    @apply w-[90%] h-auto py-2 rounded-lg flex items-center justify-center focus:bg-blue-400 focus:text-white active:bg-blue-400 active:text-white hover:bg-blue-400 hover:text-white
+    @apply w-[15rem] h-auto py-2 rounded-lg flex items-center justify-center focus:bg-blue-400 focus:text-white active:bg-blue-400 active:text-white hover:bg-blue-400 hover:text-white
   }
 }
 

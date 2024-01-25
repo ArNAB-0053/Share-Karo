@@ -15,7 +15,7 @@ module.exports = {
       colors: {
         primary: '#006da4',
         secondary: '#004d74',
-        sidebar_color: '#162C46',
+        sidebar_color: '#012245',
         header_hover: '#006494',
       },
       gridTemplateColumns: {

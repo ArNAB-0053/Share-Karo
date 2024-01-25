@@ -19,14 +19,14 @@ const Banner = () => {
 
                     <div className="mt-8 flex flex-wrap justify-center gap-4">
                         <Link
-                            className="block w-full rounded bg-primary px-12 py-3 text-sm font-medium text-white shadow hover:bg-header_hover focus:outline-none sm:w-auto"
+                            className="block w-[70%] rounded bg-primary px-12 py-3 text-sm font-medium text-white shadow hover:bg-header_hover focus:outline-none sm:w-auto"
                             href="/Files"
                         >
                             Get Started
                         </Link>
 
                         <Link
-                            className="block w-full rounded px-12 py-3 text-sm font-medium text-primary shadow hover:text-header_hover hover:bg-gray-200 focus:outline-none active:text-header_hover sm:w-auto"
+                            className="block w-[70%] rounded px-12 py-3 text-sm font-medium text-primary shadow hover:text-header_hover hover:bg-gray-200 focus:outline-none active:text-header_hover sm:w-auto"
                             href="/About"
                         >
                             Learn More
