@@ -30,6 +30,7 @@
     "@types/react-file-icon": "^1.0.4",
     "autoprefixer": "^10.0.1",
     "postcss": "^8",
+    "tailwind-scrollbar": "^3.0.5",
     "tailwindcss": "^3.3.0",
     "typescript": "5.3.3"
   }
