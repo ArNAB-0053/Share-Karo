@@ -91,7 +91,7 @@ const CustomDropzon = () => {
           filename: file.name,
           fullname: user.fullName,
           profileImg: user.imageUrl,
-          timeStamp: serverTimestamp(),
+          timestamp: serverTimestamp(),
           type: file.type,
           size: file.size,
           password: null,

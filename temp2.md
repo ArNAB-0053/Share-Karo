@@ -1,171 +1,123 @@
-import {
-  Body,
-  Button,
-  Container,
-  Column,
-  Head,
-  Heading,
-  Html,
-  Img,
-  Preview,
-  Row,
-  Section,
-  Text,
-} from "@react-email/components";
-import * as React from "react";
+'use client'
+import { useUser } from '@clerk/nextjs';
+import { ArrowDownCircleIcon, ShareIcon } from '@heroicons/react/24/solid';
+import { collection, doc, orderBy, query } from 'firebase/firestore';
+import Link from 'next/link';
+import { use, useEffect, useState } from 'react';
+import { FileIcon, defaultStyles } from 'react-file-icon';
+import { db } from '../../firebase';
+import { useCollection } from 'react-firebase-hooks/firestore';
 
-interface EmailTemplateProps {
-  res: any;
-}
+const TableWrapper = ({ skeletonFile }) => {
+  const { user } = useUser();
+  const [initialFiles, setInitialFiles] = useState(skeletonFile);
+  const [sort, setSort] = useState({ field: 'timestamp', order: 'asc' });
 
-const baseUrl = ''
+  const [docs, loading, error] = useCollection(
+    user &&
+    query(collection(db, 'users', user.id, 'files'), orderBy(sort.field, sort.order))
+  );
 
-export const EmailTemplate = ({ res }: EmailTemplateProps) => {
-  const formattedDate = new Intl.DateTimeFormat("en", {
-    dateStyle: "long",
-    timeStyle: "short",
-  }).format();
+  const handleSort = (field) => {
+    setSort((prevSort) => ({
+      field,
+      order: prevSort.field === field && prevSort.order === 'asc' ? 'desc' : 'asc',
+    }));
+  };
+
+  useEffect(() => {
+    if (!docs) return;
+
+    const files = docs.docs.map((doc) => ({
+      id: doc?.id,
+      filename: doc.data().filename || doc.id,
+      timestamp: doc.data().timestamp?.toMillis() / 1000 || undefined,
+      fullname: doc.data().fullname,
+      downloadUrl: doc.data().downloadUrl,
+      type: doc.data().type,
+      size: doc.data().size,
+    }));
+
+    // Sort the files locally based on the current sort settings
+    const sortedFiles = files.sort((a, b) => {
+      const valueA = sort.field === 'filename' ? a.filename.toUpperCase() : a.timestamp;
+      const valueB = sort.field === 'filename' ? b.filename.toUpperCase() : b.timestamp;
+
+      if (valueA < valueB) {
+        return sort.order === 'asc' ? -1 : 1;
+      }
+      if (valueA > valueB) {
+        return sort.order === 'asc' ? 1 : -1;
+      }
+
+      return 0;
+    });
+
+    setInitialFiles(sortedFiles);
+  }, [docs, sort]);
 
   return (
-    <Html>
-      <Head />
-      <Preview>Yelp recent login</Preview>
-      <Body style={main}>
-        <Container>
-          <Section style={logo}>
-            <Img style={image} width={620} src='https://firebasestorage.googleapis.com/v0/b/sharekaro-f7a3d.appspot.com/o/only_logo.png?alt=media&token=f80848f5-dd14-4dd3-8810-d7567de874a2' />
-          </Section>
+    <div className="overflow-x-auto">
+      <label htmlFor="sortOrder">Sort by:</label>
+      <select
+        id="sortOrder"
+        value={`${sort.field}-${sort.order}`}
+        onChange={(e) => {
+          const [field, order] = e.target.value.split('-');
+          handleSort(field, order);
+        }}
+      >
+        <option value="filename-asc">Name (Ascending)</option>
+        <option value="filename-desc">Name (Descending)</option>
+        <option value="timestamp-asc">Time (Ascending)</option>
+        <option value="timestamp-desc">Time (Descending)</option>
+      </select>
 
-          <Section style={content}>
-            <Row>
-              <Img
-                style={image}
-                width={620}
-                src="https://firebasestorage.googleapis.com/v0/b/sharekaro-f7a3d.appspot.com/o/banner.png?alt=media&token=9ccc0743-e1b2-4f5f-ae79-0bb4b0164478"
-              />
-            </Row>
 
-            <Row style={{ ...boxInfos, paddingBottom: "0" }}>
-              <Column>
-                <Heading
-                  style={{
-                    fontSize: 32,
-                    fontWeight: "bold",
-                    textAlign: "center",
-                  }}
-                >
-                  Hi {res.userName.split(' ')[0]},
-                </Heading>
-                <Heading
-                  as="h2"
-                  style={{
-                    fontSize: 22,
-                    fontWeight: "bold",
-                    textAlign: "center",
-                  }}
-                >
-                  You've Received a File
-                </Heading>
+      <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+        <thead className="ltr:text-left rtl:text-right">
+          <tr>
+            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-start">File</th>
+            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-start">Filename</th>
+            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-start">Type</th>
+            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-start">Size</th>
+            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 ">Download</th>
+            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-start">Share</th>
+          </tr>
+        </thead>
 
-                <Text style={paragraph}>
-                  <b>Filename: </b>
-                  {res.filename}
-                </Text>
-                <Text style={{ ...paragraph, marginTop: -5 }}>
-                  <b>Format: </b>
-                  {res.type}
-                </Text>
-                <Text style={{ ...paragraph, marginTop: -5 }}>
-                  <b>Size: </b>
-                  {res.size}
-                </Text>
-                {/* <Text style={{ ...paragraph, marginTop: -5 }}>
-                    <b>Password: </b>
-                    {res.password}
-                  </Text> */}
-              </Column>
-            </Row>
-            <Row style={{ ...boxInfos, paddingTop: "0" }}>
-              <Column style={containerButton} colSpan={2}>
-                <a href={res.shareUrl} style={button}>
-                  Download
+        <tbody className="divide-y divide-gray-200">
+          {initialFiles.map((e, index) => (
+            <tr key={index} className=''>
+              <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                <div className='h-8 w-8'>
+                  <FileIcon extension="jpg" {...defaultStyles.docx} />
+                </div>
+              </td>
+              <td className="whitespace-nowrap px-4 py-2 text-gray-700">{e.filename}</td>
+              <td className="whitespace-nowrap px-4 py-2 text-gray-700">{e.type}</td>
+              <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                {`${e.size < 1024 * 1024
+                  ? (e.size / 1024).toFixed(2) + " KB"
+                  : (e.size / (1024 * 1024)).toFixed(2) + " MB"
+                  }`}
+              </td>
+              <td className="whitespace-nowrap px-4 py-2 text-gray-700 flex items-center justify-center">
+                <a href={e.downloadUrl} className='flex flex-col h-8 w-8 items-center justify-center' target='_blank'>
+                  <ArrowDownCircleIcon className='h-full w-full text-primary' />
                 </a>
-              </Column>
-            </Row>
-          </Section>
+              </td>
+              <td className="whitespace-nowrap px-4 py-2 text-gray-700 ">
+                <Link className='h-6 w-6' href={`/FilePreview/${e.id}`} >
+                  <ShareIcon className='w-8 h-8 text-secondary' />
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
 
-          <Section style={containerImageFooter}>
-            <Img
-              style={image}
-              width={620}
-              src='https://firebasestorage.googleapis.com/v0/b/sharekaro-f7a3d.appspot.com/o/logo.png?alt=media&token=f1fc56e6-1533-4caa-8057-abb9eb6ca48a'
-            />
-          </Section>
-
-          <Text
-            style={{
-              textAlign: "center",
-              fontSize: 12,
-              color: "rgb(0,0,0, 0.7)",
-            }}
-          >
-            © 2024 | ShareKaro., INDIA | www.sharekaro.com
-          </Text>
-        </Container>
-      </Body>
-    </Html>
-  );
-};
-
-export default EmailTemplate;
-
-const main = {
-  backgroundColor: "",
-  fontFamily:
-    'Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
-};
-
-const paragraph = {
-  fontSize: 16,
-};
-
-const logo = {
-  padding: "30px 20px",
-  height: "8rem"
-};
-
-const containerButton = {
-  display: "flex",
-  justifyContent: "center",
-  width: "100%",
-};
-
-const button = {
-  backgroundColor: "#e00707",
-  borderRadius: 3,
-  color: "#FFF",
-  fontWeight: "bold",
-  border: "1px solid rgb(0,0,0, 0.1)",
-  cursor: "pointer",
-  padding: "12px 30px",
-};
-
-const content = {
-  border: "1px solid rgb(0,0,0, 0.1)",
-  borderRadius: "3px",
-  overflow: "hidden",
-};
-
-const image = {
-  maxWidth: "100%",
-};
-
-const boxInfos = {
-  padding: "20px",
-};
-
-const containerImageFooter = {
-  padding: "45px 0 0 0",
-  width: "10rem",
-  height: "4rem"
-};
+export default TableWrapper
