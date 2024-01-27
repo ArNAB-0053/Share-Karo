@@ -44,7 +44,7 @@ const Header = () => {
 
                     <div className={`${toggle ? 'bg-[#212529c4] w-[430vw] opacity-1' : 'bg-transparent w-0 opacity-0'} trans fixed h-[150vh] top-[-4vh] left-0`}></div>
 
-                    <div className={`absolute overflow-hidden right-[-80vw] z-40 trans bg-sidebar_color w-[18rem] h-[150lvh] py-16  gap-5 top-[-5vh] md:hidden ${toggle ? 'right-[0] ' : ''}`} ref={sidebarRef} >
+                    <div className={`fixed overflow-hidden right-[-80vw] z-40 trans bg-sidebar_color w-[18rem] h-[150lvh] py-16  gap-5 top-[0] md:hidden ${toggle ? 'right-[0] ' : ''}`} ref={sidebarRef} >
                         <span className='h-auto w-full py-5 overflow-hidden flex items-center justify-center'>
                             <Image src='/Image/main_logo.png' width='140' height='60' className='h-28 w-36' />
                         </span>

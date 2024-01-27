@@ -52,6 +52,10 @@ body {
   .mobileHeader {
     @apply w-[15rem] h-auto py-2 rounded-lg flex items-center justify-center focus:bg-blue-400 focus:text-white active:bg-blue-400 active:text-white hover:bg-blue-400 hover:text-white
   }
+
+  .media_links svg {
+    @apply w-9 h-9 text-zinc-800/80 hover:text-[#2c2c2c] 
+  }
 }
 
 .progressBar {
