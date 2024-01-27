@@ -77,13 +77,13 @@ const Header = () => {
                         <nav aria-label="Global">
                             <ul className="flex items-center justify-center gap-6 text-lg font-[Montserrat] font-bold text-primary">
                                 <li>
-                                    <Link className="" href="/"> Home </Link>
+                                    <Link className="hover:text-blue-300" href="/"> Home </Link>
                                 </li>
                                 <li>
-                                    <Link className="" href="/About"> About </Link>
+                                    <Link className="hover:text-blue-300" href="/About"> About </Link>
                                 </li>
                                 <li>
-                                    <Link className="" href="/Contact"> Contact </Link>
+                                    <Link className="hover:text-blue-300" href="/Contact"> Contact </Link>
                                 </li>
                             </ul>
                         </nav>

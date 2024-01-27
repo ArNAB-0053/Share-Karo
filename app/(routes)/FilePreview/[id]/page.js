@@ -79,7 +79,7 @@ const page = ({ params }) => {
               width="300"
               height="300"
               className="w-full h-full rounded-md object-contain"
-              alt="Video"
+              alt={fileInfo.type}
             />
             <h1 className="text-md sm:text-lg font-bold text-center w-[70vw] sm:w-auto overflow-hidden truncate">
               {fileInfo.filename}

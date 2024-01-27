@@ -10,28 +10,41 @@ import {
 } from "@heroicons/react/24/solid";
 import { useEffect, useState, useContext } from "react";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 
 const Sidebar = ({ closeSideBar }) => {
   // sidebar is in routes folder's header
   const [activeUp, setActiveUp] = useState(false);
   const [activeFile, setActiveFile] = useState(false);
   const [activeUpg, setActiveUpg] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+
+  // console.log(pathname);
 
   useEffect(() => {
-    if (location.pathname === "/Files") {
+    if (pathname === "/Files") {
       setActiveFile(true);
       setActiveUp(false);
-    }
-
-    if (location.pathname === "/Upload") {
+      setActiveUpg(false);
+    } else if (pathname === "/Upload") {
       setActiveUp(true);
       setActiveFile(false);
+      setActiveUpg(false);
+    } else if (pathname === "Upgrade") {
+      setActiveFile(false);
+      setActiveUp(false);
+      setActiveUpg(true);
+    } else {
+      setActiveFile(false);
+      setActiveUp(false);
+      setActiveUpg(false);
     }
-  }, []);
+  }, [pathname]);
 
   return (
     <div className="w-[18rem] bg-sidebar_color h-[100lvh] flex flex-col items-start justify-start gap-6 ">
-      <span className="h-auto w-full pt-5 overflow-hidden flex items-center justify-center">
+      <Link href='/' className="h-auto w-full pt-5 overflow-hidden flex items-center justify-center">
         <Image
           src="/Image/main_logo.png"
           width="140"
@@ -44,7 +57,7 @@ const Sidebar = ({ closeSideBar }) => {
           height="60"
           className="h-7 w-36 md:block hidden"
         />
-      </span>
+      </Link>
       <div className="w-full h-[1px] mb-6 bg-white/35"></div>
       <div className="w-full">
         <nav aria-label="Global">

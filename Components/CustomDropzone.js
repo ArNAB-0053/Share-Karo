@@ -12,6 +12,8 @@ import { useUser } from "@clerk/nextjs";
 import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 import ProgressBar from './ProgressBar'
 import { useRouter } from "next/navigation";
+import { FileIcon, defaultStyles } from 'react-file-icon';
+import { COLOR_EXTENSION_MAP } from "../Constant";
 
 const CustomDropzon = () => {
   const [files, setFiles] = useState([])
@@ -182,15 +184,14 @@ const CustomDropzon = () => {
             <div key={index} className="flex gap-6 items-center justify-between p-2">
               <div className="flex items-center justify-center gap-3">
                 <div className="p-3 w-[4.2rem] h-[5rem] flex items-end justify-end">
-                  {file?.type?.includes('image') && (
-                    <Image src='/Image/img.png' width='300' height='300' className="file" alt="Image" />
-                  )}
-                  {file?.type?.includes('application') && (
-                    <Image src='/Image/pdf.png' width='300' height='300' className="file" alt="PDF" />
-                  )}
-                  {file?.type?.includes('video') && (
-                    <Image src='/Image/vdo.png' width='300' height='300' className="file" alt="Video" />
-                  )}
+                  <FileIcon extension={file.type.split('/')[1]}
+                    color='#dadada4c'
+                    fold
+                    radius={3}
+                    glyphColor='#000'
+                    labelColor={COLOR_EXTENSION_MAP[file.type.split('/')[1]]}
+                    labelUppercase
+                    {...defaultStyles[file.type.split('/')[1]]} />
                 </div>
                 <div className="flex flex-col gap-1 text-sm">
                   <h1 className="truncate w-32 md:w-72"><strong>Name:</strong> {file?.name}</h1>
