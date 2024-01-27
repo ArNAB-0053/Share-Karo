@@ -46,7 +46,7 @@ body {
   }
 
   .line {
-    @apply w-full h-[1px] bg-blue-400/30
+    @apply w-[18rem] h-[1px] bg-blue-400/30
   }
 
   .mobileHeader {

@@ -4,10 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import Media from './Media'
+import { SignInButton, SignedOut, UserButton } from '@clerk/nextjs'
 
 const Header = () => {
     const [toggle, setToggle] = useState(false)
     const sidebarRef = useRef(null);
+
 
     const closeSidebar = () => {
         setToggle(false);
@@ -42,7 +44,7 @@ const Header = () => {
 
                     <div className={`${toggle ? 'bg-[#212529c4] w-[430vw] opacity-1' : 'bg-transparent w-0 opacity-0'} trans fixed h-[150vh] top-[-4vh] left-0`}></div>
 
-                    <div className={`absolute overflow-hidden right-[-80vw] trans bg-sidebar_color w-[18rem] h-[150lvh] py-16  gap-5 top-[-5vh] md:hidden ${toggle ? 'right-[0] ' : ''}`}  ref={sidebarRef} >
+                    <div className={`absolute overflow-hidden right-[-80vw] z-40 trans bg-sidebar_color w-[18rem] h-[150lvh] py-16  gap-5 top-[-5vh] md:hidden ${toggle ? 'right-[0] ' : ''}`} ref={sidebarRef} >
                         <span className='h-auto w-full py-5 overflow-hidden flex items-center justify-center'>
                             <Image src='/Image/main_logo.png' width='140' height='60' className='h-28 w-36' />
                         </span>
@@ -73,32 +75,41 @@ const Header = () => {
                         <Media />
                     </div>
 
-                    <div className={`hidden md:block`} >
+                    <div className={`hidden md:block absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]`} >
                         <nav aria-label="Global">
                             <ul className="flex items-center justify-center gap-6 text-lg font-[Montserrat] font-bold text-primary">
                                 <li>
-                                    <Link className="hover:text-blue-300" href="/"> Home </Link>
+                                    <Link className="hover:text-blue-400" href="/"> Home </Link>
                                 </li>
                                 <li>
-                                    <Link className="hover:text-blue-300" href="/About"> About </Link>
+                                    <Link className="hover:text-blue-400" href="/About"> About </Link>
                                 </li>
                                 <li>
-                                    <Link className="hover:text-blue-300" href="/Contact"> Contact </Link>
+                                    <Link className="hover:text-blue-400" href="/Contact"> Contact </Link>
                                 </li>
                             </ul>
                         </nav>
                     </div>
 
 
-                    <div className="flex items-center gap-4">
-                        <div className="sm:flex sm:gap-4">
+                    <div className="flex items-center gap-2">
+                        <div className="hidden md:flex sm:gap-0">
                             <Link
-                                className="rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-header_hover"
+                                className="rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-blue-400 active:scale-[0.94] trans md:mr-3"
                                 href="/Files"
                             >
                                 Get started
                             </Link>
                         </div>
+
+                        <UserButton afterSignOutUrl='/' />
+                        <SignedOut>
+                            <button className='border-1 border-solid border-primary/30  shadow-sm shadow-primary/30 py-2 px-4 text-primary rounded-md hover:bg-primary hover:text-white active:scale-[0.94] active:bg-primary active:text-white trans'>
+
+                                <SignInButton afterSignInUrl='/Files' mode='modal' />
+
+                            </button>
+                        </SignedOut>
 
                         <div className="block md:hidden" >
                             <button className="rounded bg-[#B5c99a3] p-2 text-primary transition" onClick={() => setToggle(!toggle)}>
