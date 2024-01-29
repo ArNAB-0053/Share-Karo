@@ -40,7 +40,7 @@ const Checker = ({ docId, userId }) => {
     });
 
     const handlePassword = async () => {
-        if (!prompt || prompt.trim() === "") {
+        if (isChecked && (!prompt || prompt.trim() === "")) {
             // Show an error or take appropriate action
             errorToast();
             return;
@@ -53,7 +53,7 @@ const Checker = ({ docId, userId }) => {
                 password: prompt,
             })
             setPrompt('');
-            successToast();            
+            successToast();
         }
 
         catch (error) {
