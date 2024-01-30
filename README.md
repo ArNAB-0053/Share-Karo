@@ -17,3 +17,9 @@ ShareKaro is more than just a file storage app; it's a seamless and intuitive so
   - Clerk Authentication
   - React Email
   - Resend
+
+## Links
+
+Feel free to explore ShareKaro and experience its features live. Visit the website [here](https://share-karo.vercel.app/).
+
+Alternatively, you can watch a demo of ShareKaro in action. Check out the demo video [here](https://drive.google.com/file/d/1-GRuc0NRATJBa_Vh38FSb0roDKQFIvVa/view?usp=sharing).
