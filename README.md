@@ -1,7 +1,7 @@
-# ShareKaro
+# **ShareKaro**
 ShareKaro is more than just a file storage app; it's a seamless and intuitive solution for storing and sharing files effortlessly. Think of it like Dropbox, but with an added twist – users can send a file's URL to others, allowing them to view the content without the need to log in. ShareKaro streamlines the file-sharing process, making it convenient and accessible for everyone.
 
-## Key Features
+## **Key Features**
 ### Effortless File Sharing: 
 Share files with a simple URL, enabling others to view them hassle-free.
 ### Email Sharing: 
