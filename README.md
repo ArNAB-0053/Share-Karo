@@ -20,6 +20,6 @@ ShareKaro is more than just a file storage app; it's a seamless and intuitive so
 
 ## Links
 
-Feel free to explore ShareKaro and experience its features live. Visit the website [here](https://blog-simplify-sigma.vercel.app/).
+Feel free to explore BLOGSIMPLIFY and experience its features live. Visit the website [here](https://blog-simplify-sigma.vercel.app/).
 
-Alternatively, you can watch a demo of ShareKaro in action. Check out the demo video [here](https://drive.google.com/file/d/11NLWgt9RXy-U1_9w1XPgzOO0nYEugj4m/view?usp=sharing).
+Alternatively, you can watch a demo of BLOGSIMPLIFY in action. Check out the demo video [here](https://drive.google.com/file/d/11NLWgt9RXy-U1_9w1XPgzOO0nYEugj4m/view?usp=sharing).
