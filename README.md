@@ -22,5 +22,5 @@ ShareKaro is more than just a file storage app; it's a seamless and intuitive so
 
 Feel free to explore ShareKaro and experience its features live. Visit the website [here](https://share-karo.vercel.app/).
 
-Alternatively, you can watch a demo of ShareKaro in action. Check out the demo video [here](https://firebasestorage.googleapis.com/v0/b/sharekaro-f7a3d.appspot.com/o/Sharekaro.mp4?alt=media&token=74b103c2-5e43-49dc-9b45-b6b9e29507ed).
+Alternatively, you can watch a demo of ShareKaro in action. Check out the demo video [here](https://drive.google.com/file/d/1EQRtBhXQ-3kBNdFKLyu8et51np4FITbz/view?usp=sharing).
 
